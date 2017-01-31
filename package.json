@@ -1,0 +1,23 @@
+{
+  "name": "arget",
+  "version": "1.0.0",
+  "description": "manipulate arguments properly",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Javascipt/arget.git"
+  },
+  "keywords": [
+    "arguments",
+    "function"
+  ],
+  "author": "Khalid REHIOUI <Rehioui@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Javascipt/arget/issues"
+  },
+  "homepage": "https://github.com/Javascipt/arget#readme"
+}
