@@ -50,7 +50,9 @@ Arget.prototype.all = function (type) {
 };
 
 Arget.prototype.toArray = function () {
-  return Array.prototype.slice.call(this._args);
+  if(this._array) return this._array;
+
+  return this._array = Array.prototype.slice.call(this._args);
 };
 
 Arget.prototype.forEach = function (iteratee) {
