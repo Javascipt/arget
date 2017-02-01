@@ -53,6 +53,14 @@ Arget.prototype.toArray = function () {
   return Array.prototype.slice.call(this._args);
 };
 
+Arget.prototype.forEach = function (iteratee) {
+  for(var i = 0; i < this.length; i++) {
+    iteratee(this._args[i], i, this._args);
+  }
+};
+
+Arget.prototype.each =Arget.prototype.forEach;
+
 Arget.prototype.pick = function () {
   var argsObject  = this.toArray().map(arg => { return { arg }; })
     , hash        = _util.typeHash(argsObject)
