@@ -75,6 +75,14 @@ Arget.prototype.pick = function () {
   });
 };
 
+Arget.prototype.omit = function () {
+  var hash = _util.toKeys(( new Arget(arguments) ).toArray());
+
+  return this.filter(function (arg) {
+    return !hash[Object.getPrototypeOf(arg).constructor];
+  });
+};
+
 Arget.prototype.match = function () {
   var argsObject  = this.map(arg => { return { arg }; })
     , hash        = _util.typeHash(argsObject)
