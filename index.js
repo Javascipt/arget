@@ -67,6 +67,15 @@ Arget.prototype.map = function (iteratee) {
   return this.toArray().map(iteratee);
 };
 
+Arget.prototype.pick = function () {
+  var argsObject  = ( new Arget(arguments) ).map(arg => { return { arg }; })
+    , hash        = _util.typeHash(argsObject);
+
+  return this.filter(function (arg) {
+    return hash[Object.getPrototypeOf(arg).constructor];
+  });
+}
+
 Arget.prototype.match = function () {
   var argsObject  = this.toArray().map(arg => { return { arg }; })
     , hash        = _util.typeHash(argsObject)
