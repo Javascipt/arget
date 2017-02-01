@@ -59,6 +59,10 @@ Arget.prototype.forEach = function (iteratee) {
 
 Arget.prototype.each = Arget.prototype.forEach;
 
+Arget.prototype.filter = function (predicate) {
+  return this.toArray().filter(predicate);
+};
+
 Arget.prototype.pick = function () {
   var argsObject  = this.toArray().map(arg => { return { arg }; })
     , hash        = _util.typeHash(argsObject)
