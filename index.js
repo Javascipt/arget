@@ -76,7 +76,7 @@ Arget.prototype.pick = function () {
 };
 
 Arget.prototype.match = function () {
-  var argsObject  = this.toArray().map(arg => { return { arg }; })
+  var argsObject  = this.map(arg => { return { arg }; })
     , hash        = _util.typeHash(argsObject)
     , payload     = ( new Arget(arguments) ).toArray()
     , neutral     = _util.matchFromHash(payload, hash);
