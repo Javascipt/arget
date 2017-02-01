@@ -63,14 +63,18 @@ Arget.prototype.filter = function (predicate) {
   return this.toArray().filter(predicate);
 };
 
-Arget.prototype.pick = function () {
+Arget.prototype.map = function (iteratee) {
+  return this.toArray().map(iteratee);
+};
+
+Arget.prototype.match = function () {
   var argsObject  = this.toArray().map(arg => { return { arg }; })
     , hash        = _util.typeHash(argsObject)
     , payload     = ( new Arget(arguments) ).toArray()
-    , neutral     = _util.pickFromHash(payload, hash);
+    , neutral     = _util.matchFromHash(payload, hash);
 
   for(var i = 0, obj; i < neutral.length; i++) {
-    do { obj = argsObject.shift(); } while (obj && obj.picked);
+    do { obj = argsObject.shift(); } while (obj && obj.matched);
     payload[neutral[i]] = obj ? obj.arg : null;
   }
 
