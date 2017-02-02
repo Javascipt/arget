@@ -20,7 +20,7 @@ Arget.prototype.get = function (index, type) {
   if(!type) return this._args[index];
 
   for(var i = 0; i<this.length; i++) {
-    if(Object.getPrototypeOf(this._args[i]) == type.prototype) {
+    if(_util.getType(this._args[i]) == type) {
       return this._args[i];
     }
   }
@@ -30,7 +30,7 @@ Arget.prototype.getRight = function (index, type) {
   if(!type) return this._args[this.length - index - 1];
 
   for(var i = this.length  - 1; i >= 0; i--) {
-    if(Object.getPrototypeOf(this._args[i]) == type.prototype) {
+    if(_util.getType(this._args[i]) == type) {
       return this._args[i];
     }
   }
@@ -41,7 +41,7 @@ Arget.prototype.all = function (type) {
 
   var args = [];
   for(var i = 0; i<this.length; i++) {
-    if(Object.getPrototypeOf(this._args[i]) == type.prototype) {
+    if(_util.getType(this._args[i]) == type) {
       args.push(this._args[i]);
     }
   }
@@ -73,7 +73,7 @@ Arget.prototype.pick = function () {
   var hash = _util.toKeys(( new Arget(arguments) ).toArray());
 
   return this.filter(function (arg) {
-    return hash[Object.getPrototypeOf(arg).constructor];
+    return hash[_util.getType(arg)];
   });
 };
 
@@ -81,7 +81,7 @@ Arget.prototype.omit = function () {
   var hash = _util.toKeys(( new Arget(arguments) ).toArray());
 
   return this.filter(function (arg) {
-    return !hash[Object.getPrototypeOf(arg).constructor];
+    return !hash[_util.getType(arg)];
   });
 };
 
