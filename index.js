@@ -20,7 +20,7 @@ Arget.prototype.get = function (index, type) {
   if(!type) return this._args[index];
 
   for(var i = 0; i<this.length; i++) {
-    if(_util.getType(this._args[i]) == type) {
+    if(_util.getType(this._args[i]) == type && index-- == 0) {
       return this._args[i];
     }
   }
@@ -30,7 +30,7 @@ Arget.prototype.getRight = function (index, type) {
   if(!type) return this._args[this.length - index - 1];
 
   for(var i = this.length  - 1; i >= 0; i--) {
-    if(_util.getType(this._args[i]) == type) {
+    if(_util.getType(this._args[i]) == type && index-- == 0) {
       return this._args[i];
     }
   }
