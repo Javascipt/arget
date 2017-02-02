@@ -87,11 +87,25 @@ Arget.prototype.omit = function () {
 
 Arget.prototype.match = function () {
   var argsObject  = this.map(arg => { return { arg }; })
-    , hash        = _util.typeHash(argsObject)
+    , hash        = _util.hashByType(argsObject)
     , payload     = ( new Arget(arguments) ).toArray()
     , neutral     = _util.matchFromHash(payload, hash);
 
   for(var i = 0, obj; i < neutral.length; i++) {
+    do { obj = argsObject.shift(); } while (obj && obj.matched);
+    payload[neutral[i]] = obj ? obj.arg : null;
+  }
+
+  return payload;
+};
+
+Arget.prototype.matchRight = function () {
+  var argsObject  = this.map(arg => { return { arg }; })
+    , hash        = _util.hashRightByType(argsObject)
+    , payload     = ( new Arget(arguments) ).toArray()
+    , neutral     = _util.matchRightFromHash(payload, hash);
+
+  for(var i = neutral.length - 1, obj; i >= 0 ; i--) {
     do { obj = argsObject.shift(); } while (obj && obj.matched);
     payload[neutral[i]] = obj ? obj.arg : null;
   }
