@@ -95,7 +95,18 @@ test('Arget.prototype.map', t => {
   t.deepEqual(result, [2, 4, 6, 8]);
 });
 
-test.todo('Arget.prototype.pick');
+test('Arget.prototype.pick', t => {
+  var f = function () {}
+    , C = function () {}
+    , c = new C;
+  t.deepEqual(genArg(1, 2, 3, 4).pick(Number), [1, 2, 3, 4]);
+  t.deepEqual(genArg(2, 3, 4, 5).pick(Object), []);
+  t.deepEqual(genArg(2, [], {}, 5).pick(Object, Array), [[], {}]);
+  t.deepEqual(genArg(2, [2, 3], {}, [4, 5]).pick(Array, Function), [[2, 3], [4, 5]]);
+  t.deepEqual(genArg(2, 3, 4, f).pick(Function), [f]);
+  t.deepEqual(genArg(2, 3, c, f).pick(C), [c]);
+});
+
 test.todo('Arget.prototype.omit');
 test.todo('Arget.prototype.match');
 test.todo('Arget.prototype.matchRight');
