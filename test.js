@@ -51,7 +51,13 @@ test('Arget.prototype.all', t => {
   t.deepEqual(genArg(2, 3, 4, f).all(Function), [f]);
 });
 
-test.todo('Arget.prototype.toArray');
+test('Arget.prototype.toArray', t => {
+  var array   = [1, 2, 3, 4]
+    , wrapper = genArg.apply(this, array);
+
+  t.deepEqual(wrapper.toArray(), array);
+});
+
 test.todo('Arget.prototype.forEach');
 test.todo('Arget.prototype.each');
 test.todo('Arget.prototype.filter');
