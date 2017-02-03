@@ -12,7 +12,13 @@ test('Arget.prototype.first', t => {
   t.deepEqual(genArg().first(), undefined);
 });
 
-test.todo('Arget.prototype.last');
+test('Arget.prototype.last', t => {
+  t.deepEqual(genArg(1, 2, 3, 4).last(), 4);
+  t.deepEqual(genArg(2, 3, 4, 5).last(), 5);
+  t.deepEqual(genArg(3, 2, null).last(), null);
+  t.deepEqual(genArg().last(), undefined);
+});
+
 test.todo('Arget.prototype.get');
 test.todo('Arget.prototype.getRight');
 test.todo('Arget.prototype.all');
