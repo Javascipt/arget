@@ -119,6 +119,19 @@ test('Arget.prototype.omit', t => {
   t.deepEqual(genArg(2, 3, c, f).omit(C), [2, 3, f]);
 });
 
-test.todo('Arget.prototype.match');
+test('Arget.prototype.match', t => {
+  var f = function () {}
+    , C = function () {}
+    , c = new C;
+  t.deepEqual(genArg(1, 2, 3, 4).match(Number), [1]);
+  t.deepEqual(genArg(2, 3, 4, 5).match(Object), [undefined]);
+  t.deepEqual(genArg(2, [], {}, 5).match(Object, Array), [{}, []]);
+  t.deepEqual(genArg(2, [2, 3], {}, [4, 5]).match(Array, Function), [[2, 3], undefined]);
+  t.deepEqual(genArg(2, 3, 4, f).match(Function), [f]);
+  t.deepEqual(genArg(2, 3, c, f).match(C), [c]);
+  t.deepEqual(genArg(2, 3, {}, 4, {a : 1}, f).match(null, Object, null, Function), [2, {}, 3, f]);
+  t.deepEqual(genArg(2, f).match(null, null, Function), [2, undefined, f]);
+});
+
 test.todo('Arget.prototype.matchRight');
 test.todo('Arget.prototype.length');
