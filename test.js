@@ -73,7 +73,17 @@ test('Arget.prototype.each', t => {
   t.deepEqual(wrapper.forEach, wrapper.each);
 });
 
-test.todo('Arget.prototype.filter');
+test('Arget.prototype.filter', t => {
+  var array   = [1, 2, 3, 4]
+    , wrapper = genArg.apply(this, array)
+    , result = wrapper.filter((e, i, a) => {
+      t.deepEqual(array, a);
+      t.deepEqual(array[i], e);
+      return e%2 == 0;
+    });
+  t.deepEqual(result, [2, 4]);
+});
+
 test.todo('Arget.prototype.map');
 test.todo('Arget.prototype.pick');
 test.todo('Arget.prototype.omit');
