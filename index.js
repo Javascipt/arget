@@ -20,7 +20,7 @@ Arget.prototype.get = function (index, type) {
   if(!type) return this._args[index];
 
   for(var i = 0; i<this.length; i++) {
-    if(_util.getType(this._args[i]) == type && index-- == 0) {
+    if(_util.getType(this._args[i]) == type.name && index-- == 0) {
       return this._args[i];
     }
   }
@@ -30,7 +30,7 @@ Arget.prototype.getRight = function (index, type) {
   if(!type) return this._args[this.length - index - 1];
 
   for(var i = this.length  - 1; i >= 0; i--) {
-    if(_util.getType(this._args[i]) == type && index-- == 0) {
+    if(_util.getType(this._args[i]) == type.name && index-- == 0) {
       return this._args[i];
     }
   }
@@ -41,7 +41,7 @@ Arget.prototype.all = function (type) {
 
   var args = [];
   for(var i = 0; i<this.length; i++) {
-    if(_util.getType(this._args[i]) == type) {
+    if(_util.getType(this._args[i]) == type.name) {
       args.push(this._args[i]);
     }
   }
@@ -70,7 +70,7 @@ Arget.prototype.map = function (iteratee) {
 };
 
 Arget.prototype.pick = function () {
-  var hash = _util.toKeys(( new Arget(arguments) ).toArray());
+  var hash = _util.toKeys(( new Arget(arguments) ).map(type => type.name));
 
   return this.filter(function (arg) {
     return hash[_util.getType(arg)];
@@ -78,7 +78,7 @@ Arget.prototype.pick = function () {
 };
 
 Arget.prototype.omit = function () {
-  var hash = _util.toKeys(( new Arget(arguments) ).toArray());
+  var hash = _util.toKeys(( new Arget(arguments) ).map(type => type.name));
 
   return this.filter(function (arg) {
     return !hash[_util.getType(arg)];
@@ -88,7 +88,7 @@ Arget.prototype.omit = function () {
 Arget.prototype.match = function () {
   var argsObject  = this.map(arg => { return { arg }; })
     , hash        = _util.hashByType(argsObject)
-    , payload     = ( new Arget(arguments) ).toArray()
+    , payload     = ( new Arget(arguments) ).map(type => type && type.name)
     , neutral     = _util.matchFromHash(payload, hash);
 
   for(var i = 0, obj; i < neutral.length; i++) {
@@ -102,7 +102,7 @@ Arget.prototype.match = function () {
 Arget.prototype.matchRight = function () {
   var argsObject  = this.map(arg => { return { arg }; })
     , hash        = _util.hashRightByType(argsObject)
-    , payload     = ( new Arget(arguments) ).toArray()
+    , payload     = ( new Arget(arguments) ).map(type => type && type.name)
     , neutral     = _util.matchRightFromHash(payload, hash);
 
   for(var i = neutral.length - 1, obj; i >= 0 ; i--) {
