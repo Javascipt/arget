@@ -30,7 +30,18 @@ test('Arget.prototype.get', t => {
   t.deepEqual(genArg(2, ()=>{}, 4, {}, f).get(1, Object), undefined);
 });
 
-test.todo('Arget.prototype.getRight');
+test('Arget.prototype.getRight', t => {
+  var f = function () {};
+  t.deepEqual(genArg(1, 2, 3, 4).getRight(0), 4);
+  t.deepEqual(genArg(2, 3, 4, 5).getRight(6), undefined);
+  t.deepEqual(genArg(2, 3, 4, 5).getRight(0, Number), 5);
+  t.deepEqual(genArg(2, 3, 4, 5).getRight(0, Function), undefined);
+  t.deepEqual(genArg(2, 3, 4, f).getRight(0, Function), f);
+  t.deepEqual(genArg(2, f, 4, ()=>{}).getRight(1, Function), f);
+  t.deepEqual(genArg(2, ()=>{}, 4, {}, f).getRight(1, Object), undefined);
+});
+
+
 test.todo('Arget.prototype.all');
 test.todo('Arget.prototype.toArray');
 test.todo('Arget.prototype.forEach');
