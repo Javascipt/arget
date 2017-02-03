@@ -68,7 +68,11 @@ test('Arget.prototype.forEach', t => {
   });
 });
 
-test.todo('Arget.prototype.each');
+test('Arget.prototype.each', t => {
+  var wrapper = genArg();
+  t.deepEqual(wrapper.forEach, wrapper.each);
+});
+
 test.todo('Arget.prototype.filter');
 test.todo('Arget.prototype.map');
 test.todo('Arget.prototype.pick');
