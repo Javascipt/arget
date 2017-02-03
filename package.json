@@ -4,7 +4,7 @@
   "description": "manipulate arguments properly",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "eslint . && ava --verbose"
   },
   "repository": {
     "type": "git",
@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/Javascipt/arget/issues"
   },
-  "homepage": "https://github.com/Javascipt/arget#readme"
+  "homepage": "https://github.com/Javascipt/arget#readme",
+  "devDependencies": {
+    "ava": "^0.18.0"
+  }
 }
