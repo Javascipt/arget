@@ -147,4 +147,7 @@ test('Arget.prototype.matchRight', t => {
   t.deepEqual(genArg(2, f).matchRight(null, null, Function), [undefined, 2, f]);
 });
 
-test.todo('Arget.prototype.length');
+test('Arget.prototype.length', t => {
+  t.deepEqual(genArg(1, 2, 3, 4).length, 4);
+  t.deepEqual(genArg().length, 0);
+});
