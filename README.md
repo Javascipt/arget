@@ -5,7 +5,7 @@
 A nice library to deal with most of arguments annoying usecases. A first Error object, a second optional argument or a last function as a callback... Arget helps solve all these issues in one line of code. Ex:
 
 ```javascript
-  var fn = () => {
+  function fn () {
     arget(arguments).toArray(); // => [1, 'str', 2, true]
     arget(arguments).pick(Number); // => [1, 2]
     arget(arguments).match(null, Boolean, String); // => [1, true, 'str']
@@ -17,7 +17,7 @@ A nice library to deal with most of arguments annoying usecases. A first Error o
 Second example :
 
 ```javascript
-  var fn = () => {
+  function fn () {
     var [foo, bar, foobar] = arget(arguments).match(null, null, Function);
     console.log(foo, bar, foobar);
   }
@@ -301,7 +301,7 @@ Returns an array of elements depending in the pattern of constructors specified.
 When a falsy value is given instead of a constructor, the position is filled with an elements not matched yet.
 
 ```javascript
-  var fn = () => {
+  function fn () {
     return arget(arguments).match(null, null, Function);
   }
 
@@ -310,7 +310,7 @@ When a falsy value is given instead of a constructor, the position is filled wit
 
 
 
-  var fn = () => {
+  function fn () {
     return arget(arguments).match(Array, null, Number, null, Function);
   }
 
