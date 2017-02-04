@@ -59,7 +59,7 @@ When requiring the arget module, you'll get a function that instanciates the [Ar
 ```javascript
   var arget = require('arget');
 
-  var f = () => {
+  function fn () {
     var wrapper = arget(arguments);
   }
 ```
