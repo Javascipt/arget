@@ -8,9 +8,11 @@ A nice library to deal with most of arguments annoying usecases. A first Error o
 
 ```javascript
   function fn () {
-    arget(arguments).toArray(); // => [1, 'str', 2, true]
-    arget(arguments).pick(Number); // => [1, 2]
-    arget(arguments).match(null, Boolean, String); // => [1, true, 'str']
+    var args = arget(arguments);
+    
+    args.toArray(); // => [1, 'str', 2, true]
+    args.pick(Number); // => [1, 2]
+    args.match(null, Boolean, String); // => [1, true, 'str']
   }
 
   fn(1, 'str', 2, true);
