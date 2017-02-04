@@ -2,6 +2,8 @@
 
 > A JavaScript utility library to manipulate Function.arguments
 
+![Arget](https://api.travis-ci.org/Javascipt/arget.svg)
+
 A nice library to deal with most of arguments annoying usecases. A first Error object, a second optional argument or a last function as a callback... Arget helps solve all these issues in one line of code. Ex:
 
 ```javascript
