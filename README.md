@@ -4,7 +4,7 @@
 
 A nice library to deal with most of arguments annoying usecases. A first Error object, a second optional argument or a last function as a callback... Arget helps solve all these issues in one line of code. Ex:
 
-```
+```javascript
   var fn = () => {
     arget(arguments).toArray(); // => [1, 'str', 2, true]
     arget(arguments).pick(Number); // => [1, 2]
@@ -16,7 +16,7 @@ A nice library to deal with most of arguments annoying usecases. A first Error o
 
 Second example :
 
-```
+```javascript
   var fn = () => {
     var [foo, bar, foobar] = arget(arguments).match(null, null, Function);
     console.log(foo, bar, foobar);
@@ -56,7 +56,7 @@ npm install --save arget
 
 ## Usage
 When requiring the arget module, you'll get a function that instanciates the [Arget wrapper](#arget-wrapper) using the arguments you are passing.
-```
+```javascript
   var arget = require('arget');
 
   var f = () => {
@@ -71,7 +71,7 @@ When requiring the arget module, you'll get a function that instanciates the [Ar
 
 Returns the first argument
 
-```
+```javascript
   var fn () => {
     return arget(arguments).first();
   }
@@ -84,7 +84,7 @@ Returns the first argument
 
 Returns the last argument
 
-```
+```javascript
   var fn () => {
     return arget(arguments).last();
   }
@@ -99,7 +99,7 @@ Returns the last argument
 
 Returns element with the constructor and the position specified
 
-```
+```javascript
   var fn () => {
     return arget(arguments).get(1);
   }
@@ -121,7 +121,7 @@ Returns element with the constructor and the position specified
 
 Returns element with the constructor and the position from the right specified
 
-```
+```javascript
   var fn () => {
     return arget(arguments).get(1);
   }
@@ -143,7 +143,7 @@ Returns element with the constructor and the position from the right specified
 
 Returns elements with the constructor specified
 
-```
+```javascript
   var fn () => {
     return arget(arguments).all(Number);
   }
@@ -155,7 +155,7 @@ Returns elements with the constructor specified
 
 Converts arguments object to array
 
-```
+```javascript
   var fn () => {
     return arget(arguments).toArray();
   }
@@ -169,7 +169,7 @@ Converts arguments object to array
 
 Iterates over the arguments
 
-```
+```javascript
   var fn () => {
     arget(arguments).forEach(e => console.log(e));
   }
@@ -181,11 +181,11 @@ The `iteratee` takes 3 arguments :
 
 > iteratee(item, index, array)
 
-`item`  : The element
-`index` : The element index on the arguments
-`array` : arguments as array
+- `item`  : The element
+- `index` : The element index on the arguments
+- `array` : The arguments as array
 
-```
+```javascript
   var fn () => {
     arget(arguments).forEach((item, index, array) => {
       console.log(item, index, array)
