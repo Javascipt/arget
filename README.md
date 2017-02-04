@@ -38,15 +38,15 @@ Second example :
   - [.get( )](#get)
   - [.getRight( )](#getRight)
   - [.all( )](#all)
-  - [.toArray( )](#toArray)
-  - [.forEach( )](#forEach)
+  - [.toArray( )](#toarray)
+  - [.forEach( )](#foreach)
   - [.each( )](#each)
   - [.filter( )](#filter)
   - [.map( )](#map)
   - [.pick( )](#pick)
   - [.omit( )](#omit)
   - [.match( )](#match)
-  - [.matchRight( )](#matchRight)
+  - [.matchRight( )](#matchright)
   - [.length( )](#length)
 
 ## Install
@@ -160,6 +160,43 @@ Converts arguments object to array
     return arget(arguments).toArray();
   }
 
-  fn(true, 2, 3, 4); // ==> [true, 2, 3, 4]
+  fn(1, 2, 3, 4); // ==> [1, 2, 3, 4]
   fn(); // ==> []
+```
+### .forEach()
+
+>  .forEach(iteratee)
+
+Iterates over the arguments
+
+```
+  var fn () => {
+    arget(arguments).forEach(e => console.log(e));
+  }
+
+  fn(1, 2, 3, 4); // ==> prints 1 2 3 4
+
+```
+The `iteratee` takes 3 arguments :
+
+> iteratee(item, index, array)
+
+`item`  : The element
+`index` : The element index on the arguments
+`array` : arguments as array
+
+```
+  var fn () => {
+    arget(arguments).forEach((item, index, array) => {
+      console.log(item, index, array)
+    });
+  }
+
+  fn(1, 2, 3);
+
+  // prints :
+  // 1 0 [1, 2, 3]
+  // 2 1 [1, 2, 3]
+  // 3 2 [1, 2, 3]
+
 ```
